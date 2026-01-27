@@ -1069,7 +1069,10 @@ export default function App() {
           style={{ height: '100%', flex: 1, display: 'flex', flexDirection: 'column' }}
         >
           <div style={{
-            padding: 'clamp(0.75rem, 2vw, 1.25rem)',
+            paddingTop: 'calc(env(safe-area-inset-top) + clamp(0.75rem, 2vw, 1.25rem))',
+            paddingBottom: 'clamp(0.75rem, 2vw, 1.25rem)',
+            paddingLeft: 'clamp(0.75rem, 2vw, 1.25rem)',
+            paddingRight: 'clamp(0.75rem, 2vw, 1.25rem)',
             borderBottom: '1px solid oklch(0.806 0.139 216.34 / 0.2)',
             display: 'flex',
             justifyContent: 'space-between',
@@ -1292,7 +1295,7 @@ export default function App() {
             src="/logo_rr.png"
             alt="RRSD Logo"
             style={{
-              height: 'clamp(30px, 6vw, 40px)',
+              height: 'clamp(60px, 6vw, 40px)',
               opacity: 0.8,
               transition: 'all 0.3s ease',
               cursor: 'pointer',
