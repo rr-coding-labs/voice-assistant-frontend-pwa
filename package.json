@@ -1,0 +1,29 @@
+{
+  "name": "livekit-voice-pwa",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node token-server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@livekit/components-react": "^2.7.3",
+    "@livekit/components-styles": "^1.1.7",
+    "@remotion/player": "^4.0.409",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "livekit-client": "^2.9.5",
+    "livekit-server-sdk": "^2.9.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.11",
+    "vite-plugin-pwa": "^0.21.1"
+  }
+}
