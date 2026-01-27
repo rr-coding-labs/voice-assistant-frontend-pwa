@@ -4,8 +4,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import dotenv from 'dotenv';
 
-// Load environment variables
+// Load environment variables from .env.local in development, or from system env in production
 dotenv.config({ path: '.env.local' });
+dotenv.config(); // Fallback to .env or system environment variables
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
