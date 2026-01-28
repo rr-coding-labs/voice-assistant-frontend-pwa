@@ -23,29 +23,28 @@ app.use(express.static(join(__dirname, 'dist')));
 // Token generation endpoint
 app.post('/api/token', async (req, res) => {
   try {
-    const { voice } = req.body;
-
-    const roomName = `voice-assistant-${Date.now()}`;
-    const participantName = 'User';
+    const { roomName, participantName, metadata } = req.body;
 
     const at = new AccessToken(
       process.env.LIVEKIT_API_KEY,
       process.env.LIVEKIT_API_SECRET,
       {
-        identity: participantName,
+        identity: participantName || 'User',
         ttl: '10m',
       }
     );
 
     at.addGrant({
-      room: roomName,
+      room: roomName || `voice-assistant-${Date.now()}`,
       roomJoin: true,
       canPublish: true,
       canSubscribe: true,
     });
 
-    // Add voice selection to metadata
-    at.metadata = JSON.stringify({ voice: voice || 'default' });
+    // Pass through metadata from frontend (contains voice selection)
+    if (metadata) {
+      at.metadata = metadata;
+    }
 
     const token = await at.toJwt();
 
